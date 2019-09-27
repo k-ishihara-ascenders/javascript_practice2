@@ -78,11 +78,6 @@ function showTodo() {
 /**
  * todoタスク追加の関数
  */
-let todoId = 0;
-addBtn.addEventListener('click', function() {
-  addTodo();
-});
-
 function addTodo() {
   'use strict';
   if(!(textBox.value === '')) {
@@ -151,3 +146,11 @@ function filterTodo() {
     }
   }
 }
+
+/**
+ * todoタスク追加イベント
+ */
+let todoId = 0;
+addBtn.addEventListener('click', function() {
+  addTodo();
+});
