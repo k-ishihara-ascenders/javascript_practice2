@@ -15,7 +15,6 @@ class Todo {
 
 //todoタスクの配列
 const todos = [];
-let todoId = 0;
 
 /**
  * todoタスク表示の関数
@@ -53,6 +52,7 @@ function showTodo() {
     tableRow.setAttribute('data-status', todos[i].status);
     tableRow.setAttribute('class', 'todo-task');
     todoListElement.appendChild(tableRow);
+    filterTodo();
   }
 
   const statusBtns = document.getElementsByClassName('status-btn');
@@ -68,30 +68,36 @@ function showTodo() {
       deleteTodo(i);
     });
   }
+
+  // todoタスク絞り込みイベント
+  radioForm.addEventListener('change', function() {
+    filterTodo();
+  });
 }
 
 /**
  * todoタスク追加の関数
  */
+let todoId = 0;
 addBtn.addEventListener('click', function() {
-  'use strict';
+  addTodo();
+});
 
+function addTodo() {
+  'use strict';
   if(!(textBox.value === '')) {
     const todo = new Todo(todoId, textBox.value);
     todos.push(todo);
     textBox.value = '';
     todoId++;
   }
-
   showTodo();
-});
+}
 
 /**
  * todoステータス変更の関数
  */
 function changeStatus(index) {
-  'use strict';
-
   if(todos[index].status === 0) {
     todos[index].status = 1;
   } else {
@@ -104,18 +110,14 @@ function changeStatus(index) {
  * todoタスク削除の関数
  */
 function deleteTodo(index) {
-  'use strict';
-
   todos.splice(index, 1);
   showTodo();
 }
 
 /**
- * todoタスク絞り込みイベント
+ * todoタスク絞り込み関数
  */
-radioForm.addEventListener('change', function() {
-  'use strict';
-
+function filterTodo() {
   const todoValue = parseInt(radioNodeList.value, 10);
   const todoTasks = Array.from(document.getElementsByClassName('todo-task'));
   function showAllTodo() {
@@ -123,21 +125,21 @@ radioForm.addEventListener('change', function() {
       todoTasks[i].style.display = 'table-row';
     };
   }
-  function filterTodo(value) {
+  function filterTask(value) {
     return (parseInt(value.getAttribute('data-status'), 10) !== todoValue);
   }
 
   if(todos[0] !== undefined) {
     switch (todoValue) {
       case 0:
-        const hideTasks0 = todoTasks.filter(filterTodo);
+        const hideTasks0 = todoTasks.filter(filterTask);
         showAllTodo();
         for(let i = 0; i<hideTasks0.length; i++) {
           hideTasks0[i].style.display = 'none';
         };
         break;
       case 1:
-        const hideTasks1 = todoTasks.filter(filterTodo);
+        const hideTasks1 = todoTasks.filter(filterTask);
         showAllTodo();
         for(let i = 0; i<hideTasks1.length; i++) {
           hideTasks1[i].style.display = 'none';
@@ -148,4 +150,4 @@ radioForm.addEventListener('change', function() {
         break;
     }
   }
-});
+}
