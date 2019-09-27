@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Todoリスト</title>
+</head>
+<body>
+  <h1>ToDoリスト</h1>
+  <form id="radio_form">
+    <input type="radio" value="-1" name="todo" id="good">
+    <label for="good">すべて</label>
+    <input type="radio" value="0" name="todo" id="wip">
+    <label for="wip">作業中</label>
+    <input type="radio" value="1" name="todo" id="fix">
+    <label for="fix">完了</label>
+  </form>
+
+  <table id="todo_list">
+    <tr>
+      <th>ID</th>
+      <th>コメント</th>
+      <th>状態</th>
+      <th></th>
+    </tr>
+
+    <!-- 動的に更新されるTodoリスト -->
+  </table>
+
+  <section>
+    <h2>新規タスクの追加</h2>
+    <section>
+      <input type="text" id="input_todo_box">
+      <button id="add_btn">追加</button>
+    </section>
+  </section>
+
+  <script src="main.js"></script>
+</body>
+</html>
