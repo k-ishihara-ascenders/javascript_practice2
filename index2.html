@@ -7,13 +7,11 @@
 <body>
   <h1>Todoリスト</h1>
 
-  <div>
   <form id="radio-form">
-    <input type="radio" name="swich_display" value="全て" checked="checked">全て
-    <input type="radio" name="swich_display" value="作業中">作業中
-    <input type="radio" name="swich_display" value="完了">完了
+    <input type="radio" name="swich_display" value="radio-all" checked="checked">全て
+    <input type="radio" name="swich_display" value="radio-doing">作業中
+    <input type="radio" name="swich_display" value="radio-complete">完了
   </form>
-  </div>
 
   <table>
     <thead>
@@ -32,6 +30,8 @@
   <input type="text" id="task-input">
   <button id="add-button">追加</button>
 
-  <script src="main2.js"></script>
+  <script src="functions.js"></script>
+  <script src="Todo.js"></script>
+  <script src="kadai2.js"></script>
 </body>
 </html>
